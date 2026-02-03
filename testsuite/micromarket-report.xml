@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="12" skipped="0" tests="14" time="124.988" timestamp="2026-01-08T01:55:31.232137-05:00" hostname="raspberrypi"><testcase classname="test_startup" name="test_startup" time="1.069" /><testcase classname="test_loyalty" name="test_loyalty_new_entry[29230353867655]" time="3.172"><failure message="AssertionError: Account not registered in database&#10;assert None is not None">test_loyalty.py:25: in test_loyalty_new_entry
+    assert db_data is not None, "Account not registered in database"
+E   AssertionError: Account not registered in database
+E   assert None is not None</failure></testcase><testcase classname="test_loyalty" name="test_loyalty_lynk[29230353867655]" time="4.006"><failure message="AssertionError: Account not found in database&#10;assert None is not None">test_loyalty.py:70: in test_loyalty_lynk
+    assert db_data is not None, "Account not found in database"
+E   AssertionError: Account not found in database
+E   assert None is not None</failure></testcase><testcase classname="test_loyalty" name="test_loyalty_invalid_promo[29230353867656]" time="4.391"><failure message="TypeError: expected str, bytes or os.PathLike object, not NoneType">test_loyalty.py:132: in test_loyalty_invalid_promo
+    click_button("invalid-redeem-promo")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType</failure></testcase><testcase classname="test_loyalty" name="test_loyalty_insufficient_balance[29230353867656]" time="4.174" /><testcase classname="test_collection" name="test_collection[SERVICE62]" time="1.842"><failure message="TypeError: expected str, bytes or os.PathLike object, not NoneType">test_collection.py:23: in test_collection
+    click_button("set-as-collected")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType</failure></testcase><testcase classname="test_checkout" name="test_checkout_success[29230353867655]" time="6.524"><failure message="TypeError: expected str, bytes or os.PathLike object, not NoneType">test_checkout.py:25: in test_checkout_success
+    click_button("checkout")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType</failure></testcase><testcase classname="test_checkout" name="test_checkout_failure[29230353867656]" time="3.355"><failure message="TypeError: expected str, bytes or os.PathLike object, not NoneType">test_checkout.py:41: in test_checkout_failure
+    click_button("checkout")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType</failure></testcase><testcase classname="test_offline" name="test_offline_checkout[29230353867655]" time="39.561"><failure message="TypeError: expected str, bytes or os.PathLike object, not NoneType">test_offline.py:44: in test_offline_checkout
+    click_button("checkout")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType</failure></testcase><testcase classname="test_offline" name="test_offline_checkout_unregistered[29230353867655]" time="45.900"><failure message="TypeError: expected str, bytes or os.PathLike object, not NoneType">test_offline.py:82: in test_offline_checkout_unregistered
+    click_button("cancel_invalid")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+During handling of the above exception, another exception occurred:
+test_offline.py:90: in test_offline_checkout_unregistered
+    click_button("cancel")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType</failure></testcase><testcase classname="test_offline" name="test_loyalty_balance[29230353867655]" time="4.156"><failure message="TypeError: expected str, bytes or os.PathLike object, not NoneType">test_offline.py:119: in test_loyalty_balance
+    click_button("cancel")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType</failure></testcase><testcase classname="test_collection_bkp" name="test_collection_time[SERVICE62]" time="1.400"><failure message="TypeError: expected str, bytes or os.PathLike object, not NoneType">test_collection_bkp.py:16: in test_collection_time
+    click_button("collected")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType</failure></testcase><testcase classname="test_collection_bkp" name="test_collection_no_bills[SERVICE62]" time="0.894"><failure message="TypeError: expected str, bytes or os.PathLike object, not NoneType">test_collection_bkp.py:29: in test_collection_no_bills
+    click_button("collection_nobill")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType</failure></testcase><testcase classname="test_feedback" name="test_checkout_success[29230353867657]" time="3.467"><failure message="TypeError: expected str, bytes or os.PathLike object, not NoneType">test_feedback.py:17: in test_checkout_success
+    click_button("feedback_button")
+utils/util.py:141: in click_button
+    result = subprocess.run(
+/usr/lib/python3.11/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/subprocess.py:1024: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+/usr/lib/python3.11/subprocess.py:1834: in _execute_child
+    self.pid = _fork_exec(
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType</failure></testcase></testsuite></testsuites>

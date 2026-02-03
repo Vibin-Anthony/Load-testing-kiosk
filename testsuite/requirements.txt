@@ -1,0 +1,11 @@
+pytest
+pytest-asyncio
+pytest-order
+pytest-azurepipelines
+pillow
+python-uinput
+pytesseract
+requests
+evdev
+aiohttp
+dotenv
