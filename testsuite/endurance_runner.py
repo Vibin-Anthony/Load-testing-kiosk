@@ -2,33 +2,57 @@ import asyncio
 import time
 import logging
 from checkout_flow import run_checkout
-from system_metrics import log_system_metrics
 
 logging.basicConfig(
-    filename="endurance_test.log",
+    filename="/var/log/kiosk_test/checkout.log",
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
+    format="%(message)s"
 )
 
-CARD_NUMBER = "29230353867655"
-INTERVAL = 120      # 2 minutes
-DURATION = 24 * 60 * 60  # 24 hours (seconds)
+CARD_NUMBERS = [
+    "29230353867655",
+    "29230353867656",
+    "29230353867657",
+]
+
+INTERVAL = 120          # 1 minute between transactions
+DURATION = 6 * 60     # 10 minutes total run
+
 
 async def main():
-    start_time = time.time()
-    iteration = 1
+    start = time.time()
+    txn = 1
 
-    while time.time() - start_time < DURATION:
-        logging.info(f"Transaction {iteration} started")
+    expected_total = int(DURATION / INTERVAL)
+
+    while time.time() - start < DURATION:
+        elapsed = int(time.time() - start)
+        remaining_time = max(DURATION - elapsed, 0)
+        remaining_txns = max(expected_total - (txn - 1), 0)
+
+        card = CARD_NUMBERS[(txn - 1) % len(CARD_NUMBERS)]
+
+        logging.info(
+            f"[{time.strftime('%H:%M:%S')}] ▶ Transaction {txn} | "
+            f"Card: {card} | "
+            f"Remaining: {remaining_txns} | "
+            f"Time left: {remaining_time//60}m {remaining_time%60}s"
+        )
 
         try:
-            await run_checkout(CARD_NUMBER)
-            logging.info(f"Transaction {iteration} SUCCESS")
+            await run_checkout(card, txn)
         except Exception as e:
-            logging.error(f"Transaction {iteration} FAILED: {str(e)}")
+            logging.error(
+                f"[{time.strftime('%H:%M:%S')}] ❌ Transaction {txn} FAILED | {e}"
+            )
 
-        log_system_metrics()
-        iteration += 1
-        time.sleep(INTERVAL)
+        txn += 1
+        await asyncio.sleep(INTERVAL)
+
+    logging.info(
+        f"[{time.strftime('%H:%M:%S')}] 🏁 Endurance test finished | "
+        f"Total attempted: {txn - 1}"
+    )
+
 
 asyncio.run(main())

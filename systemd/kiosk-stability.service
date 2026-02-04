@@ -1,0 +1,14 @@
+[Unit]
+Description=Kiosk 24h Stability & Endurance Test
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/opt/kiosk_test
+ExecStart=/bin/bash /opt/kiosk_test/checkout_loop.sh
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
